@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace Quotes.Data
 {
@@ -24,6 +25,24 @@ namespace Quotes.Data
         public void Save()
         {
             loader.Save(Quotes);
+        }
+
+        public void SayQuote(Quote quote)
+        {
+            if (quote == null)
+                throw new ArgumentNullException(nameof(quote));
+
+            ITextToSpeech tts = DependencyService.Get<ITextToSpeech>();
+            if (tts != null)
+            {
+                string text = quote.QuoteText;
+                if (!string.IsNullOrWhiteSpace(quote.Author))
+                {
+                    text += "; by " + quote.Author;
+                }
+                tts.Speak(text);
+            }
+
         }
     }
 }

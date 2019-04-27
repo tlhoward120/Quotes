@@ -20,7 +20,7 @@ namespace Quotes.Data
             set { SetPropertyValue(ref _quoteText, value); }
         }
 
-        public Quote() : this("Unknown", "Quote goes here..")
+        public Quote() : this("", "")
         {
         }
 

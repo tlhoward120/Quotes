@@ -15,7 +15,7 @@ namespace Quotes
 
             new QuoteManager(DependencyService.Get<IQuoteLoader>());
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Quotes.MainPage());
         }
 
         protected override void OnStart()

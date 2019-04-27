@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
 
 namespace Quotes.Droid
 {
@@ -19,6 +20,8 @@ namespace Quotes.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+            DependencyService.Register<ITextToSpeech, TextToSpeechService>();
             LoadApplication(new App());
         }
     }

@@ -2,13 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Quotes"
-             x:Class="Quotes.MainPage">
+             x:Class="Quotes.MainPage"
+             Visual="material">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddQuote"/>
+    </ContentPage.ToolbarItems>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <ListView ItemsSource="{Binding Quotes}" ItemSelected="ListView_ItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding QuoteText}" Detail="{Binding Author}" >
+                    <TextCell.ContextActions>
+                        <MenuItem Clicked="OnDelete"
+                                  CommandParameter="{Binding .}"
+                                  Text="Delete"
+                                  IsDestructive="True"/>
+                    </TextCell.ContextActions>
+                </TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 
 </ContentPage>

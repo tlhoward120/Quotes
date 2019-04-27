@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ef="clr-namespace:Quotes.Effects"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Quotes.QuoteDetailPage"
+             Visual="Material">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+    <StackLayout>
+            <Label Text="{Binding QuoteText}"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand"
+                FontSize="30"
+                FontAttributes="Italic"
+                x:Name="QuoteText">
+                <Label.Effects>
+                    <ef:ShadowEffect Color="DarkBlue" DistanceX="4" DistanceY="4" Radius="15" />
+                </Label.Effects>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SayQuote" NumberOfTapsRequired="2"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding Author}"
+                VerticalOptions="End" 
+                HorizontalOptions="End" 
+                FontSize="40"
+                x:Name="Author" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
